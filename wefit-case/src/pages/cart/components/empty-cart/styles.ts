@@ -40,14 +40,14 @@ export const EmptyCartContainer = styled.div`
   }
 `
 
-export const EmptyCartButton = styled(ButtonComponent)`
+export const ReturToMenuButton = styled(ButtonComponent)`
   width: 173px;
   height: 40px;
   font-size: 0.75rem;
   font-weight: 700;
 `
 
-export const EmptyCartDivider = styled.span`
+export const Divider = styled.span`
   width: 447px;
   height: 1.36px;
   margin-top: -1.5rem;

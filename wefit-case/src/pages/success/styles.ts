@@ -40,7 +40,7 @@ export const SuccessContainer = styled.div`
   }
 `
 
-export const SuccessReturnToMenuButton = styled(ButtonComponent)`
+export const ReturnToMenuButton = styled(ButtonComponent)`
   width: 173px;
   height: 40px;
   font-size: 0.75rem;

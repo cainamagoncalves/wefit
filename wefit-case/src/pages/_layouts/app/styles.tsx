@@ -18,5 +18,6 @@ export const AppContentContainer = styled.div`
 
   @media (max-width: 768px) {
     padding: 0 1rem;
+    padding-bottom: 1.5rem;
   }
 `

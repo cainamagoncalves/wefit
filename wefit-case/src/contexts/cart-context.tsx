@@ -2,7 +2,7 @@ import { createContext, ReactNode, useState } from 'react'
 
 import { Product } from '@/api/product'
 
-interface CartProduct {
+export interface CartProduct {
   [title: string]: {
     quantity: number
     price: number

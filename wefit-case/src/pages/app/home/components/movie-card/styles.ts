@@ -12,22 +12,22 @@ export const MovieCardContainer = styled.div`
   border-radius: 4px;
 `
 
-export const MovieCardImageContainer = styled.img`
+export const ImageContainer = styled.img`
   width: 147px;
   height: 188px;
 `
 
-export const MovieCardTitle = styled.h5`
+export const ProductTitle = styled.h5`
   font-size: 1.125rem;
   color: ${({ theme }) => theme['blue-700']};
 `
 
-export const MovieCardPrice = styled.h4`
+export const ProductPrice = styled.h4`
   font-size: 1.375rem;
   color: ${({ theme }) => theme['blue-700']};
 `
 
-export const MovieCardButton = styled(ButtonComponent)`
+export const AddToCartButton = styled(ButtonComponent)`
   display: flex;
   align-items: center;
   justify-content: center;

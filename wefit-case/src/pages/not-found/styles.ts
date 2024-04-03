@@ -9,7 +9,7 @@ export const NotFoundContainer = styled.div`
   scroll-behavior: smooth;
 `
 
-export const NotFoundContent = styled.div`
+export const ContentContainer = styled.div`
   margin-top: 1.5rem;
   display: flex;
   flex: 1;
@@ -62,14 +62,14 @@ export const NotFoundContent = styled.div`
   }
 `
 
-export const NotFoundReturnToMenuButton = styled(ButtonComponent)`
+export const ReloadPageButton = styled(ButtonComponent)`
   width: 173px;
   height: 40px;
   font-size: 0.75rem;
   font-weight: 700;
 `
 
-export const NotFoundDivider = styled.span`
+export const Divider = styled.span`
   width: 447px;
   height: 1.36px;
   margin-top: -1.5rem;

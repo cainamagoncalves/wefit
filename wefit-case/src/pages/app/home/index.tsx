@@ -1,24 +1,15 @@
 import { useQuery } from '@tanstack/react-query'
-import { useRef } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import { getProducts } from '@/api/get-products'
-import { Search } from '@/components/icons/search'
 import { LoadingSpinner } from '@/components/loading-spinner'
 
 import { MovieCard } from './components/movie-card'
-import {
-  HomeContainer,
-  HomeMoviesGrid,
-  HomeSeachInput,
-  HomeSearchIconWrapper,
-  HomeSearchInputContainer,
-} from './styles'
+import { SearchMovies } from './components/search-movies'
+import { HomeContainer, MoviesGrid } from './styles'
 
 export function Home() {
-  const [searchParams, setSearchParams] = useSearchParams()
-
-  const inputRef = useRef<HTMLInputElement | null>(null)
+  const [searchParams] = useSearchParams()
 
   const search = searchParams.get('search')
 
@@ -27,38 +18,18 @@ export function Home() {
     queryFn: () => getProducts({ search }),
   })
 
-  function handleSearchProducts() {
-    setSearchParams((prevUrlState) => {
-      if (inputRef?.current?.value) {
-        prevUrlState.set('search', inputRef?.current?.value)
-      } else {
-        prevUrlState.delete('search')
-      }
-
-      return prevUrlState
-    })
-  }
-
   return (
     <HomeContainer>
-      <HomeSearchInputContainer>
-        <HomeSeachInput
-          onBlur={handleSearchProducts}
-          ref={inputRef}
-          placeholder="Buscar filme pelo nome"
-        />
-        <HomeSearchIconWrapper onClick={handleSearchProducts}>
-          <Search />
-        </HomeSearchIconWrapper>
-      </HomeSearchInputContainer>
+      <SearchMovies />
+
       {isLoadingProducts ? (
         <LoadingSpinner />
       ) : (
-        <HomeMoviesGrid>
+        <MoviesGrid>
           {products?.map((product) => {
             return <MovieCard key={product.id} product={product} />
           })}
-        </HomeMoviesGrid>
+        </MoviesGrid>
       )}
     </HomeContainer>
   )

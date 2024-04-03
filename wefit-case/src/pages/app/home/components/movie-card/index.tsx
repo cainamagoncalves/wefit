@@ -3,11 +3,11 @@ import { ShoppingCart } from '@/components/icons/shopping-cart'
 import { useCart } from '@/hooks/use-cart'
 
 import {
-  MovieCardButton,
+  AddToCartButton,
+  ImageContainer,
   MovieCardContainer,
-  MovieCardImageContainer,
-  MovieCardPrice,
-  MovieCardTitle,
+  ProductPrice,
+  ProductTitle,
 } from './styles'
 
 interface MovieCardProps {
@@ -25,17 +25,17 @@ export function MovieCard({ product }: MovieCardProps) {
 
   return (
     <MovieCardContainer>
-      <MovieCardImageContainer src={product.image} />
+      <ImageContainer src={product.image} alt="Imagem do produto" />
 
-      <MovieCardTitle>{product.title}</MovieCardTitle>
-      <MovieCardPrice>
+      <ProductTitle>{product.title}</ProductTitle>
+      <ProductPrice>
         {product.price.toLocaleString('pt-BR', {
           style: 'currency',
           currency: 'BRL',
         })}
-      </MovieCardPrice>
+      </ProductPrice>
 
-      <MovieCardButton
+      <AddToCartButton
         $variant={productQuantityOnCart ? 'secondary' : 'primary'}
         onClick={handleAddCartProduct}
       >
@@ -44,7 +44,7 @@ export function MovieCard({ product }: MovieCardProps) {
           <span>{productQuantityOnCart ?? 0}</span>
         </div>
         ADICIONAR AO CARRINHO
-      </MovieCardButton>
+      </AddToCartButton>
     </MovieCardContainer>
   )
 }
