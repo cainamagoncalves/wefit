@@ -1,24 +1,22 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-import emptyCart from '@/assets/empty-cart.png'
+import notfoundImage from '@/assets/not-found.png'
 
-import { EmptyCartButton, EmptyCartContainer } from './styles'
+import { EmptyCartButton, EmptyCartContainer, EmptyCartDivider } from './styles'
 
 export function EmptyCart() {
+  const navigate = useNavigate()
+
+  const handleReturnToHomePage = () => navigate('/')
+
   return (
     <EmptyCartContainer>
-      <div>
-        <img src={emptyCart} alt="Carrinho de compras vazio" />
-        <h2>Seu carrinho está vazio.</h2>
-        <p>
-          Parece que você não adicionou nada ao seu carrinho. Volte à página
-          inicial e explore os filmes disponíveis.
-        </p>
-      </div>
-
-      <Link to="/">
-        <EmptyCartButton>VOLTAR PARA HOME</EmptyCartButton>
-      </Link>
+      <h1>Parece que não há nada por aqui! :(</h1>
+      <img src={notfoundImage} alt="Imagem de página não encontrada" />
+      <EmptyCartDivider />
+      <EmptyCartButton onClick={handleReturnToHomePage}>
+        Retornar à página inicial
+      </EmptyCartButton>
     </EmptyCartContainer>
   )
 }
