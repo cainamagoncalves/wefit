@@ -1,4 +1,5 @@
 import { QueryClientProvider } from '@tanstack/react-query'
+import { Helmet } from 'react-helmet'
 import { RouterProvider } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 
@@ -13,6 +14,7 @@ export function App() {
     <QueryClientProvider client={client}>
       <ThemeProvider theme={defaultTheme}>
         <CartContextProvider>
+          <Helmet titleTemplate="%s | WeMovies" />
           <GlobalStyle />
           <RouterProvider router={router} />
         </CartContextProvider>

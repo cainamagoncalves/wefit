@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
+import { Helmet } from 'react-helmet'
 import { useSearchParams } from 'react-router-dom'
 
 import { getProducts } from '@/api/get-products'
@@ -19,18 +20,21 @@ export function Home() {
   })
 
   return (
-    <HomeContainer>
-      <SearchMovies />
+    <>
+      <Helmet title="Home" />
+      <HomeContainer>
+        <SearchMovies />
 
-      {isLoadingProducts ? (
-        <LoadingSpinner />
-      ) : (
-        <MoviesGrid>
-          {products?.map((product) => {
-            return <MovieCard key={product.id} product={product} />
-          })}
-        </MoviesGrid>
-      )}
-    </HomeContainer>
+        {isLoadingProducts ? (
+          <LoadingSpinner />
+        ) : (
+          <MoviesGrid>
+            {products?.map((product) => {
+              return <MovieCard key={product.id} product={product} />
+            })}
+          </MoviesGrid>
+        )}
+      </HomeContainer>
+    </>
   )
 }

@@ -1,4 +1,5 @@
 import { useMediaQuery } from '@uidotdev/usehooks'
+import { Helmet } from 'react-helmet'
 import { useNavigate } from 'react-router-dom'
 
 import { useCart } from '@/hooks/use-cart'
@@ -35,22 +36,28 @@ export function Cart() {
   }
 
   return (
-    <CartContainer>
-      {isSmallDevice ? (
-        <>
-          {Object.entries(cartProducts)?.map(([title, product]) => {
-            return (
-              <CartProductGrid key={title} title={title} product={product} />
-            )
-          })}
-        </>
-      ) : (
-        <CartTable />
-      )}
+    <>
+      <Helmet title="Meu Carrinho" />
+      <CartContainer>
+        {isSmallDevice ? (
+          <>
+            {Object.entries(cartProducts)?.map(([title, product]) => {
+              return (
+                <CartProductGrid key={title} title={title} product={product} />
+              )
+            })}
+          </>
+        ) : (
+          <CartTable />
+        )}
 
-      <Divider />
+        <Divider />
 
-      <CartFooter total={cartProductsTotal} onFinishOrder={handleFinishOrder} />
-    </CartContainer>
+        <CartFooter
+          total={cartProductsTotal}
+          onFinishOrder={handleFinishOrder}
+        />
+      </CartContainer>
+    </>
   )
 }
