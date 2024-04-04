@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
 import notfoundImage from '@/assets/not-found.png'
 import { Header } from '@/components/header'

@@ -1,5 +1,5 @@
 import { QueryClientProvider } from '@tanstack/react-query'
-import { Helmet } from 'react-helmet'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
 import { RouterProvider } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 
@@ -11,14 +11,16 @@ import { defaultTheme } from './styles/theme/theme'
 
 export function App() {
   return (
-    <QueryClientProvider client={client}>
-      <ThemeProvider theme={defaultTheme}>
-        <CartContextProvider>
-          <Helmet titleTemplate="%s | WeMovies" />
-          <GlobalStyle />
-          <RouterProvider router={router} />
-        </CartContextProvider>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={client}>
+        <ThemeProvider theme={defaultTheme}>
+          <CartContextProvider>
+            <Helmet titleTemplate="%s | WeMovies" />
+            <GlobalStyle />
+            <RouterProvider router={router} />
+          </CartContextProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
   )
 }

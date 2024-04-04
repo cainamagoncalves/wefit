@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import { useSearchParams } from 'react-router-dom'
 
 import { getProducts } from '@/api/get-products'
