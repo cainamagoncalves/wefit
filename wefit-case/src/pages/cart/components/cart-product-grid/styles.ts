@@ -44,6 +44,7 @@ export const PriceAndSubtotalContainer = styled.div`
 export const PriceContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 1rem;
 `
 
