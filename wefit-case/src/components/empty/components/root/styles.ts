@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
-import { ButtonComponent } from '@/components/button/styles'
-
-export const EmptyCartContainer = styled.div`
+export const EmptyContainer = styled.div`
   width: 100%;
   height: 596px;
   display: flex;
@@ -38,13 +36,6 @@ export const EmptyCartContainer = styled.div`
   @media (max-width: 768px) {
     padding: 0 2.8125rem;
   }
-`
-
-export const ReturToMenuButton = styled(ButtonComponent)`
-  width: 173px;
-  height: 40px;
-  font-size: 0.75rem;
-  font-weight: 700;
 `
 
 export const Divider = styled.span`

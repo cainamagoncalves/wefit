@@ -2,12 +2,12 @@ import { useMediaQuery } from '@uidotdev/usehooks'
 import { Helmet } from 'react-helmet-async'
 import { useNavigate } from 'react-router-dom'
 
+import { Empty } from '@/components/empty'
 import { useCart } from '@/hooks/use-cart'
 
 import { CartFooter } from './components/cart-footer'
 import { CartProductGrid } from './components/cart-product-grid'
 import { CartTable } from './components/cart-table'
-import { EmptyCart } from './components/empty-cart'
 import { CartContainer, Divider } from './styles'
 
 export function Cart() {
@@ -31,8 +31,19 @@ export function Cart() {
 
   const isCartEmpty = !Object.entries(cartProducts).length
 
+  const handleReturnToHome = () => navigate('/')
+
   if (isCartEmpty) {
-    return <EmptyCart />
+    return (
+      <>
+        <Helmet title="Meu Carrinho" />
+        <Empty.Root>
+          <Empty.ActionButton onClick={handleReturnToHome}>
+            Voltar à página inicial
+          </Empty.ActionButton>
+        </Empty.Root>
+      </>
+    )
   }
 
   return (

@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async'
 import { useSearchParams } from 'react-router-dom'
 
 import { getProducts } from '@/api/get-products'
+import { Empty } from '@/components/empty'
 import { LoadingSpinner } from '@/components/loading-spinner'
 
 import { MovieCard } from './components/movie-card'
@@ -14,10 +15,27 @@ export function Home() {
 
   const search = searchParams.get('search')
 
-  const { data: products, isLoading: isLoadingProducts } = useQuery({
+  const {
+    data: products,
+    isLoading: isLoadingProducts,
+    isError,
+  } = useQuery({
     queryKey: ['products', search],
     queryFn: () => getProducts({ search }),
   })
+
+  if (isError) {
+    return (
+      <>
+        <Helmet title="Home" />
+        <Empty.Root>
+          <Empty.ActionButton onClick={() => window.location.reload()}>
+            Recarregar página
+          </Empty.ActionButton>
+        </Empty.Root>
+      </>
+    )
+  }
 
   return (
     <>
